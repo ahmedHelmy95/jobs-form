@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { ApplyJobsModule } from './apply-jobs/apply-jobs.module';
-
+import { HttpClientModule } from '@angular/common/http';
 const routes: Routes = [
   {
     path: 'apply-jobs',
@@ -14,7 +14,12 @@ const routes: Routes = [
 ];
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, ApplyJobsModule, RouterModule.forRoot(routes)],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    ApplyJobsModule,
+    RouterModule.forRoot(routes),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
