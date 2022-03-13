@@ -10,6 +10,7 @@ import { ApplyService } from 'app/apply-jobs/services/apply.service';
 export class ApplyFormComponent implements OnInit {
   graduated = true;
   applyForm: FormGroup;
+  isSubmit = false;
   constructor(
     private applyJopsSer: ApplyService,
     private formBuild: FormBuilder
@@ -41,6 +42,7 @@ export class ApplyFormComponent implements OnInit {
     this.graduated = status == 'graduated' ? true : false;
   }
   onSubmit() {
+    this.isSubmit = true;
     this.applyJopsSer.applyJobs(this.applyForm.value).subscribe(
       (res) => {
         console.log(res);
@@ -49,5 +51,8 @@ export class ApplyFormComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+  get f() {
+    return this.applyForm.controls;
   }
 }
